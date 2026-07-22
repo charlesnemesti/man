@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>$MAN</title>
+    <link rel="icon" href="public/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="public/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section id="landing" class="landing" aria-label="Enter">
+      <a href="#experience" id="enter-link" class="landing__hit">
+        <p class="landing__prompt">are you a real</p>
+        <img
+          class="landing__gif"
+          src="public/man.gif"
+          alt="MAN"
+          width="320"
+          height="320"
+        />
+        <span class="landing__arrow" aria-hidden="true">↓</span>
+        <span class="landing__hint">click to enter</span>
+      </a>
+    </section>
+
+    <section id="experience" class="experience" hidden>
+      <div class="top-stack">
+        <header class="header">
+          <div class="header__panel">
+            <a
+              id="buy-btn"
+              class="header__buy"
+              href="https://pump.fun"
+              target="_blank"
+              rel="noopener noreferrer"
+              >BUY $MAN</a
+            >
+
+            <div class="header__volume" aria-label="Volume">
+              <button
+                type="button"
+                id="mute-toggle"
+                class="volume__btn"
+                aria-label="Mute"
+                title="Mute"
+              >
+                <svg class="icon icon--speaker" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.8-3.05v6.1A3.5 3.5 0 0 0 15.5 12zm0-7.5v2.06A6.5 6.5 0 0 1 20 12a6.5 6.5 0 0 1-4.5 6.19V20.2A8.5 8.5 0 0 0 22 12a8.5 8.5 0 0 0-6.5-8.25z"
+                    fill="currentColor"
+                  />
+                </svg>
+                <svg
+                  class="icon icon--muted"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  hidden
+                >
+                  <path
+                    d="M4 9v6h4l5 4V5L8 9H4zm12.7 3l2.65-2.65 1.4 1.4L18.1 13.4l2.65 2.65-1.4 1.4L16.7 14.8l-2.65 2.65-1.4-1.4 2.65-2.65-2.65-2.65 1.4-1.4L16.7 12z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <input
+                id="volume"
+                class="volume__slider"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.7"
+                aria-label="Volume level"
+              />
+            </div>
+
+            <a
+              class="header__x"
+              href="https://x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X / Twitter"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.727-8.835L1.254 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+          </div>
+        </header>
+
+        <div class="contract" role="status">
+          <span class="contract__label">Contract</span>
+          <button
+            type="button"
+            id="copy-ca"
+            class="contract__value"
+            data-ca=""
+            title="Copy contract address"
+          >
+            waiting for launch
+          </button>
+        </div>
+      </div>
+
+      <video
+        id="man-video"
+        class="man-video"
+        src="public/man.mp4"
+        playsinline
+        loop
+        preload="auto"
+      ></video>
+
+      <canvas id="man-fx" class="man-fx" aria-hidden="true"></canvas>
+
+      <div class="man-meter" aria-live="polite">
+        <span class="man-meter__label">Time as a MAN</span>
+        <span id="man-timer" class="man-meter__time">00:00</span>
+        <button type="button" id="prove-btn" class="man-meter__prove">
+          Hold to prove you're a man
+        </button>
+      </div>
+
+      <div id="buy-nudge" class="buy-nudge" hidden>
+        <span class="buy-nudge__arrow" aria-hidden="true">↑</span>
+        <p class="buy-nudge__text">
+          a real man would be clicking here instead
+        </p>
+      </div>
+
+      <div id="toast" class="toast" hidden></div>
+      <div id="stamp" class="stamp" hidden aria-hidden="true">REAL MAN</div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
