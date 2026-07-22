@@ -3,30 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>$MAN</title>
+    <title>MAN 4663</title>
     <link rel="icon" href="public/favicon.png" type="image/png" />
     <link rel="apple-touch-icon" href="public/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500&family=Oswald:wght@700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <section id="landing" class="landing" aria-label="Enter">
+      <div class="landing__glow" aria-hidden="true"></div>
+
       <a href="#experience" id="enter-link" class="landing__hit">
         <p class="landing__prompt">are you a real</p>
-        <img
-          class="landing__gif"
-          src="public/man.gif"
-          alt="MAN"
-          width="320"
-          height="320"
-        />
+
+        <div class="landing__stage">
+          <img
+            class="landing__logo"
+            src="public/logo.png"
+            alt="MAN 4663"
+            width="320"
+            height="320"
+          />
+        </div>
+
         <span class="landing__arrow" aria-hidden="true">↓</span>
-        <span class="landing__hint">click to enter</span>
+        <span class="landing__cta">Enter</span>
+        <span class="landing__hint">click to prove it</span>
       </a>
     </section>
 
@@ -43,42 +50,13 @@
               >BUY $MAN</a
             >
 
-            <div class="header__volume" aria-label="Volume">
-              <button
-                type="button"
-                id="mute-toggle"
-                class="volume__btn"
-                aria-label="Mute"
-                title="Mute"
-              >
-                <svg class="icon icon--speaker" viewBox="0 0 24 24" aria-hidden="true">
-                  <path
-                    d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.8-3.05v6.1A3.5 3.5 0 0 0 15.5 12zm0-7.5v2.06A6.5 6.5 0 0 1 20 12a6.5 6.5 0 0 1-4.5 6.19V20.2A8.5 8.5 0 0 0 22 12a8.5 8.5 0 0 0-6.5-8.25z"
-                    fill="currentColor"
-                  />
-                </svg>
-                <svg
-                  class="icon icon--muted"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                  hidden
-                >
-                  <path
-                    d="M4 9v6h4l5 4V5L8 9H4zm12.7 3l2.65-2.65 1.4 1.4L18.1 13.4l2.65 2.65-1.4 1.4L16.7 14.8l-2.65 2.65-1.4-1.4 2.65-2.65-2.65-2.65 1.4-1.4L16.7 12z"
-                    fill="currentColor"
-                  />
-                </svg>
-              </button>
-              <input
-                id="volume"
-                class="volume__slider"
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value="0.7"
-                aria-label="Volume level"
-              />
+            <div class="brand" aria-label="MAN 4663">
+              <span class="brand__swoosh brand__swoosh--top" aria-hidden="true"></span>
+              <div class="brand__text">
+                <span class="brand__man">MAN</span>
+                <span class="brand__code">4663</span>
+              </div>
+              <span class="brand__swoosh brand__swoosh--bottom" aria-hidden="true"></span>
             </div>
 
             <a
@@ -110,6 +88,44 @@
             waiting for launch
           </button>
         </div>
+      </div>
+
+      <div class="volume" aria-label="Volume">
+        <button
+          type="button"
+          id="mute-toggle"
+          class="volume__btn"
+          aria-label="Mute"
+          title="Mute"
+        >
+          <svg class="icon icon--speaker" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a3.5 3.5 0 0 0-1.8-3.05v6.1A3.5 3.5 0 0 0 15.5 12zm0-7.5v2.06A6.5 6.5 0 0 1 20 12a6.5 6.5 0 0 1-4.5 6.19V20.2A8.5 8.5 0 0 0 22 12a8.5 8.5 0 0 0-6.5-8.25z"
+              fill="currentColor"
+            />
+          </svg>
+          <svg
+            class="icon icon--muted"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            hidden
+          >
+            <path
+              d="M4 9v6h4l5 4V5L8 9H4zm12.7 3l2.65-2.65 1.4 1.4L18.1 13.4l2.65 2.65-1.4 1.4L16.7 14.8l-2.65 2.65-1.4-1.4 2.65-2.65-2.65-2.65 1.4-1.4L16.7 12z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
+        <input
+          id="volume"
+          class="volume__slider"
+          type="range"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.7"
+          aria-label="Volume level"
+        />
       </div>
 
       <video

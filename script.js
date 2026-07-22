@@ -321,7 +321,7 @@
   });
 
   experience.addEventListener("pointerdown", (event) => {
-    if (event.target.closest(".top-stack, .man-meter, .toast, .buy-nudge")) return;
+    if (event.target.closest(".top-stack, .man-meter, .toast, .buy-nudge, .volume")) return;
     spawnBurst(event.clientX, event.clientY, CLICK_BURST);
     spawnSparks(event.clientX, event.clientY);
   });
@@ -354,18 +354,6 @@
   });
 
   window.addEventListener("resize", resizeCanvas);
-
-  const gif = document.querySelector(".landing__gif");
-  if (gif) {
-    gif.addEventListener("error", () => {
-      gif.replaceWith(
-        Object.assign(document.createElement("span"), {
-          className: "landing__man-word",
-          textContent: "MAN",
-        })
-      );
-    });
-  }
 
   if (location.hash === "#experience") {
     history.replaceState(null, "", location.pathname);

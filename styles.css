@@ -42,8 +42,10 @@ button {
   z-index: 20;
   display: grid;
   place-items: center;
+  overflow: hidden;
   background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, #1a1814 0%, transparent 70%),
+    linear-gradient(180deg, rgba(214, 255, 0, 0.12) 0%, transparent 42%),
+    radial-gradient(ellipse 70% 55% at 50% 35%, rgba(214, 255, 0, 0.22) 0%, transparent 70%),
     var(--bg);
   animation: fade-in 0.6s var(--ease) both;
 }
@@ -52,14 +54,27 @@ button {
   display: none;
 }
 
+.landing__glow {
+  position: absolute;
+  width: min(90vw, 520px);
+  height: min(90vw, 520px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 255, 0, 0.28) 0%, transparent 68%);
+  filter: blur(8px);
+  pointer-events: none;
+  animation: pulse-soft 2.8s ease-in-out infinite;
+}
+
 .landing__hit {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
   cursor: pointer;
   text-align: center;
-  padding: 1.5rem;
+  padding: 1.25rem;
   transition: transform 0.35s var(--ease);
 }
 
@@ -69,46 +84,60 @@ button {
 
 .landing__hit:hover .landing__arrow {
   transform: translateY(6px);
-  color: var(--fluoro);
+  color: var(--ink);
+}
+
+.landing__hit:hover .landing__cta {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
 }
 
 .landing__prompt {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(1.75rem, 5vw, 3rem);
-  letter-spacing: 0.08em;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: clamp(0.72rem, 2.2vw, 0.85rem);
+  letter-spacing: 0.28em;
   line-height: 1;
-  color: var(--muted);
+  color: var(--fluoro);
   text-transform: uppercase;
 }
 
-.landing__gif {
-  width: min(42vw, 280px);
-  height: auto;
-  aspect-ratio: 1;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.05) saturate(0.95);
-  animation: pulse-soft 2.4s ease-in-out infinite;
+.landing__stage {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
-.landing__man-word {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(4rem, 18vw, 9rem);
-  letter-spacing: 0.04em;
-  line-height: 0.9;
-  color: var(--ink-light);
+.landing__logo {
+  width: min(52vw, 280px);
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+  filter: drop-shadow(0 0 22px rgba(214, 255, 0, 0.45));
   animation: pulse-soft 2.4s ease-in-out infinite;
 }
 
 .landing__arrow {
-  font-size: 1.5rem;
-  color: var(--ink-light);
+  font-size: 1.35rem;
+  color: var(--fluoro);
   transition: transform 0.35s var(--ease), color 0.35s var(--ease);
   animation: bounce 1.4s ease-in-out infinite;
 }
 
+.landing__cta {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(1.2rem, 3vw, 1.55rem);
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1.35rem;
+  background: var(--fluoro);
+  color: var(--ink);
+  box-shadow: 0 0 18px rgba(214, 255, 0, 0.35);
+  transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
+}
+
 .landing__hint {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
@@ -184,8 +213,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.4rem 0.55rem;
+  gap: 0.65rem;
+  padding: 0.35rem 0.5rem;
   background: var(--panel);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -200,6 +229,7 @@ button {
   color: var(--ink);
   transition: transform 0.25s var(--ease), filter 0.25s var(--ease);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .header__buy:hover {
@@ -207,13 +237,91 @@ button {
   filter: brightness(1.08);
 }
 
-.header__volume {
+/* —— Logo lettering (MAN / 4663) —— */
+.brand {
+  position: relative;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 0.15rem 0.4rem;
+  overflow: hidden;
+}
+
+.brand__text {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.78;
+  transform: skewX(-12deg);
+}
+
+.brand__man,
+.brand__code {
+  font-family: "Oswald", Impact, Haettenschweiler, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 2.5px #000;
+  paint-order: stroke fill;
+  text-shadow:
+    2px 2px 0 #000,
+    3px 3px 0 #000,
+    0 0 12px rgba(0, 0, 0, 0.35);
+}
+
+.brand__man {
+  font-size: clamp(1.55rem, 4.2vw, 2.15rem);
+}
+
+.brand__code {
+  font-size: clamp(1.05rem, 2.8vw, 1.45rem);
+  letter-spacing: 0.08em;
+  margin-top: -0.05em;
+}
+
+.brand__swoosh {
+  position: absolute;
+  width: 42%;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.brand__swoosh--top {
+  top: 18%;
+  left: 4%;
+  transform: rotate(-18deg);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.brand__swoosh--bottom {
+  right: 4%;
+  bottom: 20%;
+  transform: rotate(-18deg);
+}
+
+/* —— Standalone volume control —— */
+.volume {
+  position: absolute;
+  right: clamp(0.75rem, 3vw, 1.5rem);
+  bottom: clamp(1rem, 3vw, 1.75rem);
+  z-index: 5;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  flex: 1;
-  justify-content: center;
-  min-width: 0;
+  gap: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(214, 255, 0, 0.35);
+  animation: fade-in 0.7s var(--ease) 0.15s both;
 }
 
 .volume__btn {
@@ -223,7 +331,7 @@ button {
   height: 28px;
   border: 0;
   background: transparent;
-  color: var(--ink-light);
+  color: var(--fluoro);
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -234,8 +342,7 @@ button {
 }
 
 .volume__slider {
-  width: 100%;
-  max-width: 110px;
+  width: clamp(72px, 16vw, 120px);
   height: 3px;
   appearance: none;
   background: rgba(255, 255, 255, 0.28);
@@ -575,12 +682,31 @@ button {
 
 @media (max-width: 560px) {
   .header__panel {
-    gap: 0.4rem;
-    padding: 0.35rem 0.4rem;
+    gap: 0.35rem;
+    padding: 0.3rem 0.35rem;
+  }
+
+  .brand__man {
+    font-size: 1.35rem;
+  }
+
+  .brand__code {
+    font-size: 0.95rem;
+  }
+
+  .brand__swoosh {
+    width: 34%;
+    height: 2px;
+  }
+
+  .volume {
+    left: 0.65rem;
+    right: auto;
+    bottom: 0.75rem;
   }
 
   .volume__slider {
-    max-width: 72px;
+    width: 72px;
   }
 
   .contract {
@@ -588,6 +714,6 @@ button {
   }
 
   .man-meter {
-    bottom: 0.85rem;
+    bottom: 3.6rem;
   }
 }
